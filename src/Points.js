@@ -8,7 +8,7 @@ const StyledPoints = styled.div`
   display: flex;
   flex-flow: column;
   padding: 40px;
-  width: 20%;
+  width: 30%;
   color: #fff;
   background-color: #282e33;
 

@@ -11,7 +11,7 @@ const StyledMap = styled.div`
   display: flex;
   flex: 1 0 auto;
   padding: 40px;
-  width: 80%;
+  width: 70%;
   color: var(--map-text-color);
   background-color: var(--map-bg);
 `;
