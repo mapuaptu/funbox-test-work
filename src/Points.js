@@ -30,13 +30,49 @@ const StyledPoints = styled.div`
 `;
 
 class Points extends Component {
+  constructor(props) {
+    super(props);
+
+    this.addPoint = this.addPoint.bind(this);
+  }
+
+  state = {
+    points: [],
+    pointsCounter: 0,
+  };
+
+  addPoint(event) {
+    if (event.key === 'Enter' && event.target.value.length > 4) {
+      let points = [
+        ...this.state.points,
+        Object.assign(
+          {},
+          {
+            id: ++this.state.pointsCounter,
+            title: event.target.value,
+          },
+        ),
+      ];
+
+      this.setState(() => ({
+        points,
+      }));
+    }
+  }
+
   render() {
+    const { points } = this.state;
+
     return (
       <StyledPoints className="points">
-        <input className="points__input" placeholder="Новая точка маршрута" />
-        <Point title="Клиническая" />
-        <Point title="Строительная" />
-        <Point title="Чапаева" />
+        <input
+          onKeyPress={this.addPoint}
+          className="points__input"
+          placeholder="Новая точка маршрута"
+        />
+        {points.map(point => (
+          <Point title={point.title} key={point.id} />
+        ))}
       </StyledPoints>
     );
   }
