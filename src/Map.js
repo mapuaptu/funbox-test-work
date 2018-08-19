@@ -18,7 +18,7 @@ class Map extends Component {
   render() {
     return (
       <StyledMap>
-       <YandexMap />
+        <YandexMap />
       </StyledMap>
     );
   }

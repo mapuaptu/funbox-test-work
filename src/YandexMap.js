@@ -11,7 +11,7 @@ const YandexMap = () => {
   return (
     <YMaps>
       <Map state={mapState} width="100%" height="100%">
-        <Circle geometry={{ coordinates: [52.9883, 49.695], radius: 5}}/>
+        <Circle geometry={{ coordinates: [52.9883, 49.695], radius: 5 }} />
       </Map>
     </YMaps>
   );
