@@ -1,0 +1,30 @@
+{
+  "name": "funbox-test-work",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "normalize.css": "8.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4",
+    "styled-components": "3.4.2"
+  },
+  "pre-commit": ["lint:js", "lint:css"],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint:js": "prettier --write src/**/*.js",
+    "lint:css": "stylelint src/**/*.js"
+  },
+  "devDependencies": {
+    "pre-commit": "1.2.2",
+    "stylelint": "9.5.0",
+    "stylelint-config-recommended": "2.1.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-declaration-block-no-ignored-properties": "1.1.0",
+    "stylelint-order": "1.0.0",
+    "stylelint-processor-styled-components": "1.3.2"
+  }
+}
