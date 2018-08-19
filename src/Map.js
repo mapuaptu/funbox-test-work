@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import YandexMap from './YandexMap';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -17,7 +18,7 @@ class Map extends Component {
   render() {
     return (
       <StyledMap>
-        <div>Map</div>
+       <YandexMap />
       </StyledMap>
     );
   }
