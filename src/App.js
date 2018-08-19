@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Points from './Points';
+import Map from './Map';
+
+import styled from 'styled-components';
+
+const StyledApp = styled.div`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-      </div>
+      <StyledApp className="App">
+        <Points />
+        <Map />
+      </StyledApp>
     );
   }
 }
