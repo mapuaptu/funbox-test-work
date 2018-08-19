@@ -38,7 +38,7 @@ class Point extends Component {
     return (
       <StyledPoint className="point">
         <div className="point__title">{title}</div>
-        <div className="point__remove">
+        <div className="point__remove" onClick={this.props.removePointHandler}>
           <img src={removeIcon} alt="Удалить" />
         </div>
       </StyledPoint>

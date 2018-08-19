@@ -34,6 +34,7 @@ class Points extends Component {
     super(props);
 
     this.addPoint = this.addPoint.bind(this);
+    this.removePoint = this.removePoint.bind(this);
   }
 
   state = {
@@ -60,6 +61,10 @@ class Points extends Component {
     }
   }
 
+  removePoint(event) {
+    console.log(event.target);
+  }
+
   render() {
     const { points } = this.state;
 
@@ -71,7 +76,7 @@ class Points extends Component {
           placeholder="Новая точка маршрута"
         />
         {points.map(point => (
-          <Point title={point.title} key={point.id} />
+          <Point title={point.title} key={point.id} removePointHandler={this.removePoint} />
         ))}
       </StyledPoints>
     );
