@@ -8,8 +8,10 @@ const StyledMap = styled.div`
   --map-bg: #18191d;
   --map-text-color: #fff;
 
+  display: flex;
   flex: 1 0 auto;
   padding: 40px;
+  width: 80%;
   color: var(--map-text-color);
   background-color: var(--map-bg);
 `;
@@ -17,7 +19,7 @@ const StyledMap = styled.div`
 class Map extends Component {
   render() {
     return (
-      <StyledMap>
+      <StyledMap className="map">
         <YandexMap />
       </StyledMap>
     );
