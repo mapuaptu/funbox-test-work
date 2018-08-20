@@ -30,19 +30,12 @@ const StyledPoints = styled.div`
 `;
 
 class Points extends Component {
-  constructor(props) {
-    super(props);
-
-    this.addPoint = this.addPoint.bind(this);
-    this.removePoint = this.removePoint.bind(this);
-  }
-
   state = {
     points: [],
     pointsCounter: 0,
   };
 
-  addPoint(event) {
+  handlerAddPoint = event => {
     if (event.key === 'Enter' && event.target.value.length > 4) {
       let points = [
         ...this.state.points,
@@ -59,11 +52,17 @@ class Points extends Component {
         points,
       }));
     }
-  }
+  };
 
-  removePoint(event) {
-    console.log(event.target);
-  }
+  handlerRemovePoint = pointId => {
+    const filteredPoints = this.state.points.filter(point => {
+      return point.id !== pointId;
+    });
+
+    this.setState(state => ({
+      points: filteredPoints,
+    }));
+  };
 
   render() {
     const { points } = this.state;
@@ -71,12 +70,17 @@ class Points extends Component {
     return (
       <StyledPoints className="points">
         <input
-          onKeyPress={this.addPoint}
+          onKeyPress={this.handlerAddPoint}
           className="points__input"
           placeholder="Новая точка маршрута"
         />
         {points.map(point => (
-          <Point title={point.title} key={point.id} removePointHandler={this.removePoint} />
+          <Point
+            title={point.title}
+            key={`${point.id}-${point.title}`}
+            id={point.id}
+            removePoint={this.handlerRemovePoint}
+          />
         ))}
       </StyledPoints>
     );

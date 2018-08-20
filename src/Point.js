@@ -32,14 +32,18 @@ const StyledPoint = styled.div`
 `;
 
 class Point extends Component {
+  handleRemove = () => {
+    this.props.removePoint(this.props.id);
+  };
+
   render() {
     const { title } = this.props;
 
     return (
       <StyledPoint className="point">
         <div className="point__title point__title2">{title}</div>
-        <div className="point__remove" onClick={this.props.removePointHandler}>
-          <img src={removeIcon} alt="Удалить1523123123" />
+        <div className="point__remove" onClick={this.handleRemove}>
+          <img src={removeIcon} alt="Удалить" />
         </div>
       </StyledPoint>
     );
