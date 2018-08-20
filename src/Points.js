@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Point from './Point';
 import PointRemove from './PointRemove';
+import data from './data/points';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -15,12 +17,14 @@ const StyledPoints = styled.div`
   background-color: #282e33;
 
   .points__input {
+    display: block;
     margin: 0;
     margin-bottom: 50px;
     outline: none;
     border: none;
     border-radius: 2px;
     padding: 10px 15px;
+    width: 100%;
     font-size: 22px;
     color: #c0c8d0;
     background-color: #3d444b;
@@ -44,7 +48,7 @@ class Points extends Component {
         Object.assign(
           {},
           {
-            id: ++this.state.pointsCounter,
+            id: this.state.pointsCounter + 1,
             title: event.target.value,
           },
         ),
@@ -75,12 +79,20 @@ class Points extends Component {
 
   componentDidMount() {
     this.setState(() => ({
-      pointsCounter: 0,
+      points: data.points,
+      pointsCounter: data.points.length,
     }));
   }
 
   render() {
-    const { points } = this.state;
+    let pointsComponent = this.state.points.map(point => (
+      <Point
+        title={point.title}
+        key={point.id}
+        id={point.id}
+        removePoint={this.handlerRemovePoint}
+      />
+    ));
 
     return (
       <StyledPoints className="points">
@@ -90,14 +102,7 @@ class Points extends Component {
             className="points__input"
             placeholder="Новая точка маршрута"
           />
-          {points.map(point => (
-            <Point
-              title={point.title}
-              key={`${point.id}-${point.title}`}
-              id={point.id}
-              removePoint={this.handlerRemovePoint}
-            />
-          ))}
+          {pointsComponent}
         </div>
         <div>
           <PointRemove removeAllPoints={this.handlerRemoveAllPoints} />

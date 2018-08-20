@@ -41,7 +41,7 @@ class Point extends Component {
 
     return (
       <StyledPoint className="point">
-        <div className="point__title point__title2">{title}</div>
+        <div className="point__title">{title}</div>
         <div className="point__remove" onClick={this.handleRemove}>
           <img src={removeIcon} alt="Удалить" />
         </div>
