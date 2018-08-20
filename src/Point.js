@@ -13,7 +13,7 @@ const StyledPoint = styled.div`
 
   .point__remove {
     position: absolute;
-    right: 5px;
+    right: 8px;
     top: 5px;
     width: 10px;
     height: 10px;
@@ -37,7 +37,7 @@ class Point extends Component {
 
     return (
       <StyledPoint className="point">
-        <div className="point__title">{title}</div>
+        <div className="point__title point__title2">{title}</div>
         <div className="point__remove" onClick={this.props.removePointHandler}>
           <img src={removeIcon} alt="Удалить1523123123" />
         </div>
