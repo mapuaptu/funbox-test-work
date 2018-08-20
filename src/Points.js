@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Point from './Point';
+import PointRemove from './PointRemove';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -7,6 +8,7 @@ import styled from 'styled-components';
 const StyledPoints = styled.div`
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   padding: 40px;
   width: 30%;
   color: #fff;
@@ -64,24 +66,35 @@ class Points extends Component {
     }));
   };
 
+  handlerRemoveAllPoints = () => {
+    this.setState(state => ({
+      points: [],
+    }));
+  };
+
   render() {
     const { points } = this.state;
 
     return (
       <StyledPoints className="points">
-        <input
-          onKeyPress={this.handlerAddPoint}
-          className="points__input"
-          placeholder="Новая точка маршрута"
-        />
-        {points.map(point => (
-          <Point
-            title={point.title}
-            key={`${point.id}-${point.title}`}
-            id={point.id}
-            removePoint={this.handlerRemovePoint}
+        <div>
+          <input
+            onKeyPress={this.handlerAddPoint}
+            className="points__input"
+            placeholder="Новая точка маршрута"
           />
-        ))}
+          {points.map(point => (
+            <Point
+              title={point.title}
+              key={`${point.id}-${point.title}`}
+              id={point.id}
+              removePoint={this.handlerRemovePoint}
+            />
+          ))}
+        </div>
+        <div>
+          <PointRemove removeAllPoints={this.handlerRemoveAllPoints} />
+        </div>
       </StyledPoints>
     );
   }
