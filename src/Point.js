@@ -26,7 +26,7 @@ const StyledPoint = styled.div`
     }
 
     &:hover {
-      opacity: 0.6;
+      opacity: 0.5;
     }
   }
 `;
@@ -39,7 +39,7 @@ class Point extends Component {
       <StyledPoint className="point">
         <div className="point__title">{title}</div>
         <div className="point__remove" onClick={this.props.removePointHandler}>
-          <img src={removeIcon} alt="Удалить" />
+          <img src={removeIcon} alt="Удалить1523123123" />
         </div>
       </StyledPoint>
     );
