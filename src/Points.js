@@ -34,7 +34,7 @@ const StyledPoints = styled.div`
 class Points extends Component {
   state = {
     points: [],
-    pointsCounter: 0,
+    pointsCounter: null,
   };
 
   handlerAddPoint = event => {
@@ -58,6 +58,7 @@ class Points extends Component {
 
   handlerRemovePoint = pointId => {
     const filteredPoints = this.state.points.filter(point => {
+      console.log(pointId);
       return point.id !== pointId;
     });
 
@@ -71,6 +72,12 @@ class Points extends Component {
       points: [],
     }));
   };
+
+  componentDidMount() {
+    this.setState(() => ({
+      pointsCounter: 0,
+    }));
+  }
 
   render() {
     const { points } = this.state;
