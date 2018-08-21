@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Point from './Point';
 import PointRemove from './PointRemove';
+import SortableList from './PointsList/PointsList';
 import data from './data/points';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -85,15 +84,6 @@ class Points extends Component {
   }
 
   render() {
-    let pointsComponent = this.state.points.map(point => (
-      <Point
-        title={point.title}
-        key={point.id}
-        id={point.id}
-        removePoint={this.handlerRemovePoint}
-      />
-    ));
-
     return (
       <StyledPoints className="points">
         <div>
@@ -102,7 +92,7 @@ class Points extends Component {
             className="points__input"
             placeholder="Новая точка маршрута"
           />
-          {pointsComponent}
+          <SortableList points={this.state.points} />
         </div>
         <div>
           <PointRemove removeAllPoints={this.handlerRemoveAllPoints} />
