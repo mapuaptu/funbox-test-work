@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Consumer} from './AppContext';
 import PointAllRemove from './PointsList/PointAllRemove';
 import PointInput from './PointsList/PointInput';
 import SortableList from './PointsList/PointsList';
@@ -21,7 +22,14 @@ class Points extends Component {
       <StyledPoints className="points">
         <div>
           <PointInput />
-          <SortableList distance={5} />
+
+          <Consumer>
+            {({handlerSortList}) => {
+              return (
+                <SortableList distance={5} onSortEnd={handlerSortList}/>
+              );
+            }}
+          </Consumer>
         </div>
         <div>
           <PointAllRemove />

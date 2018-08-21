@@ -1,4 +1,5 @@
 import React, { Component, createContext } from 'react';
+import { arrayMove } from 'react-sortable-hoc';
 import data from './data/points';
 
 const { Provider, Consumer } = createContext();
@@ -29,6 +30,14 @@ class AppContext extends Component {
     }
   };
 
+  handlerSortList = ({ oldIndex, newIndex }) => {
+    if (oldIndex !== newIndex) {
+      this.setState(() => ({
+        points: arrayMove(this.state.points, oldIndex - 1, newIndex - 1),
+      }));
+    }
+  };
+
   handlerRemovePoint = id => {
     const filteredPoints = this.state.points.filter(point => {
       return point.id !== id;
@@ -37,8 +46,6 @@ class AppContext extends Component {
     this.setState(() => ({
       points: filteredPoints,
     }));
-
-    console.log(id);
   };
 
   handlerRemoveAllPoints = () => {
@@ -62,6 +69,7 @@ class AppContext extends Component {
           handlerRemoveAllPoints: this.handlerRemoveAllPoints,
           handlerAddPoint: this.handlerAddPoint,
           handlerRemovePoint: this.handlerRemovePoint,
+          handlerSortList: this.handlerSortList,
         }}
       >
         {this.props.children}

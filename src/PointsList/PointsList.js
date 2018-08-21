@@ -5,9 +5,7 @@ import { SortableContainer } from 'react-sortable-hoc';
 
 import { Consumer } from '../AppContext';
 
-const StyledSortableList = styled.ul`
-  display: flex;
-  flex-flow: column;
+const StyledSortableList = styled.ul` 
   list-style: none;
   margin: 0;
   padding: 0;
