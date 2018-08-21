@@ -9,6 +9,7 @@ const StyledPoint = styled.li`
   margin-bottom: 20px;
   border: 1px solid #c0c8d0;
   padding: 20px 10px;
+  word-break: break-all;
   color: #c0c8d0;
 `;
 

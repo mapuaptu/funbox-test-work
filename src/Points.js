@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Consumer} from './AppContext';
+import { Consumer } from './AppContext';
 import PointAllRemove from './PointsList/PointAllRemove';
 import PointInput from './PointsList/PointInput';
 import SortableList from './PointsList/PointsList';
@@ -11,7 +11,6 @@ const StyledPoints = styled.div`
   flex-flow: column;
   justify-content: space-between;
   padding: 40px;
-  width: 30%;
   color: #fff;
   background-color: #282e33;
 `;
@@ -24,10 +23,8 @@ class Points extends Component {
           <PointInput />
 
           <Consumer>
-            {({handlerSortList}) => {
-              return (
-                <SortableList distance={5} onSortEnd={handlerSortList}/>
-              );
+            {({ handlerSortList }) => {
+              return <SortableList distance={5} onSortEnd={handlerSortList} />;
             }}
           </Consumer>
         </div>

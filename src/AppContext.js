@@ -1,13 +1,12 @@
 import React, { Component, createContext } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
-import data from './data/points';
 
 const { Provider, Consumer } = createContext();
 
 class AppContext extends Component {
   state = {
     points: [],
-    pointsCounter: null,
+    pointsCounter: -1,
   };
 
   handlerAddPoint = event => {
@@ -27,13 +26,15 @@ class AppContext extends Component {
         points,
         pointsCounter: this.state.pointsCounter + 1,
       }));
+
+      event.target.value = '';
     }
   };
 
   handlerSortList = ({ oldIndex, newIndex }) => {
     if (oldIndex !== newIndex) {
       this.setState(() => ({
-        points: arrayMove(this.state.points, oldIndex - 1, newIndex - 1),
+        points: arrayMove(this.state.points, oldIndex, newIndex),
       }));
     }
   };
@@ -53,13 +54,6 @@ class AppContext extends Component {
       points: [],
     }));
   };
-
-  componentDidMount() {
-    this.setState(() => ({
-      points: data.points,
-      pointsCounter: data.points.length,
-    }));
-  }
 
   render() {
     return (

@@ -5,7 +5,7 @@ import { SortableContainer } from 'react-sortable-hoc';
 
 import { Consumer } from '../AppContext';
 
-const StyledSortableList = styled.ul` 
+const StyledSortableList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -20,12 +20,13 @@ const SortableList = SortableContainer(() => {
 
           return (
             <StyledSortableList className="points-list">
-              {points.map(point => {
+              {points.map((point, index) => {
+                console.log(point);
                 return (
                   <SortablePoint
-                    key={point.id}
+                    key={`${point.id} - ${point.title}`}
                     id={point.id}
-                    index={point.id}
+                    index={index}
                     title={point.title}
                   />
                 );

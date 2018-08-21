@@ -6,9 +6,11 @@ import AppContext from './AppContext';
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  height: auto;
+  min-height: 100vh;
 `;
 
 const App = () => {

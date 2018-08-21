@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
 import YandexMap from './YandexMap';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
 const StyledMap = styled.div`
-  --map-bg: #18191d;
-  --map-text-color: #fff;
+  position: relative;
+  color: #fff;
+  background-color: #18191d;
 
-  display: flex;
-  flex: 1 0 auto;
-  padding: 40px;
-  width: 70%;
-  color: var(--map-text-color);
-  background-color: var(--map-bg);
+  .map__container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    /*stylelint-disable*/
+    > div {
+      > ymaps {
+        width: 100% !important;
+
+        > ymaps {
+          width: 100% !important;
+        }
+      }
+    }
+  }
 `;
 
 class Map extends Component {
   render() {
     return (
       <StyledMap className="map">
-        <YandexMap />
+        <div className="map__container">
+          <YandexMap />
+        </div>
       </StyledMap>
     );
   }
 }
-
-Map.propTypes = {};
 
 export default Map;
