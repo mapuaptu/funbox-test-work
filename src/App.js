@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Points from './Points';
 import Map from './Map';
+import AppContext from './AppContext';
 
 import styled from 'styled-components';
 
@@ -10,15 +11,15 @@ const StyledApp = styled.div`
   height: 100vh;
 `;
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <AppContext>
       <StyledApp className="App">
         <Points />
         <Map />
       </StyledApp>
-    );
-  }
-}
+    </AppContext>
+  );
+};
 
 export default App;

@@ -3,6 +3,8 @@ import SortablePoint from './Point';
 import styled from 'styled-components';
 import { SortableContainer } from 'react-sortable-hoc';
 
+import { Consumer } from '../AppContext';
+
 const StyledSortableList = styled.ul`
   display: flex;
   flex-flow: column;
@@ -11,13 +13,30 @@ const StyledSortableList = styled.ul`
   padding: 0;
 `;
 
-const SortableList = SortableContainer(({ points }) => {
+const SortableList = SortableContainer(() => {
   return (
-    <StyledSortableList className="points-list">
-      {points.map(point => {
-        return <SortablePoint key={point.id} index={point.id} title={point.title} />;
-      })}
-    </StyledSortableList>
+    <div>
+      <Consumer>
+        {({ state }) => {
+          const points = state.points;
+
+          return (
+            <StyledSortableList className="points-list">
+              {points.map(point => {
+                return (
+                  <SortablePoint
+                    key={point.id}
+                    id={point.id}
+                    index={point.id}
+                    title={point.title}
+                  />
+                );
+              })}
+            </StyledSortableList>
+          );
+        }}
+      </Consumer>
+    </div>
   );
 });
 
