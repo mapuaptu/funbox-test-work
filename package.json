@@ -7,7 +7,7 @@
     "start": "node server.js",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
   },
   "repository": {
     "type": "git",

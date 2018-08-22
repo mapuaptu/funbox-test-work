@@ -19,6 +19,12 @@ app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/client/build/index.html`);
 });
 
+app.get("/test", (req, res) => {
+  res.json({
+    msg: 'TEST OK'
+  });
+});
+
 app.listen(port, () => {
   console.log(`app start at port ${port}`);
 });
