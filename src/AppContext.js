@@ -1,31 +1,43 @@
 import React, { Component, createContext } from 'react';
+import uuid from 'uuid';
 import { arrayMove } from 'react-sortable-hoc';
+import axios from 'axios/index';
 
 const { Provider, Consumer } = createContext();
 
 class AppContext extends Component {
   state = {
     points: [],
-    pointsCounter: -1,
   };
 
   handlerAddPoint = event => {
     if (event.key === 'Enter' && event.target.value.length > 4) {
-      let points = [
-        ...this.state.points,
-        Object.assign(
-          {},
-          {
-            id: this.state.pointsCounter + 1,
-            title: event.target.value,
-          },
-        ),
-      ];
+      let point = event.target.value;
 
-      this.setState(() => ({
-        points,
-        pointsCounter: this.state.pointsCounter + 1,
-      }));
+      axios.get(`https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${point}`).then(data => {
+        let center = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+          .split(' ')
+          .reverse()
+          .map(value => parseFloat(value));
+
+        let points = [
+          ...this.state.points,
+          Object.assign(
+            {},
+            {
+              id: uuid.v4(),
+              title: point,
+              center,
+              zoom: 15,
+              type: 'yandex#satellite',
+            },
+          ),
+        ];
+
+        this.setState(() => ({
+          points,
+        }));
+      });
 
       event.target.value = '';
     }
