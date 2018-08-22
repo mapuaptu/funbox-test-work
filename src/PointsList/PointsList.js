@@ -1,6 +1,7 @@
 import React from 'react';
-import SortablePoint from './Point';
+import Point from './Point';
 import styled from 'styled-components';
+import uuid from 'uuid';
 import { SortableContainer } from 'react-sortable-hoc';
 
 import { Consumer } from '../AppContext';
@@ -11,7 +12,7 @@ const StyledSortableList = styled.ul`
   padding: 0;
 `;
 
-const SortableList = SortableContainer(() => {
+const PointsList = SortableContainer(() => {
   return (
     <div>
       <Consumer>
@@ -22,14 +23,7 @@ const SortableList = SortableContainer(() => {
             <StyledSortableList className="points-list">
               {points.map((point, index) => {
                 console.log(point);
-                return (
-                  <SortablePoint
-                    key={`${point.id} - ${point.title}`}
-                    id={point.id}
-                    index={index}
-                    title={point.title}
-                  />
-                );
+                return <Point key={uuid.v4()} id={point.id} index={index} title={point.title} />;
               })}
             </StyledSortableList>
           );
@@ -39,4 +33,4 @@ const SortableList = SortableContainer(() => {
   );
 });
 
-export default SortableList;
+export default PointsList;

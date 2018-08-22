@@ -13,7 +13,7 @@ const StyledPoint = styled.li`
   color: #c0c8d0;
 `;
 
-const SortablePoint = SortableElement(({ title, id }) => {
+const Point = SortableElement(({ title, id }) => {
   return (
     <StyledPoint className="point">
       <div className="point__title">{title}</div>
@@ -22,4 +22,4 @@ const SortablePoint = SortableElement(({ title, id }) => {
   );
 });
 
-export default SortablePoint;
+export default Point;
