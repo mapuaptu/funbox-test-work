@@ -6,7 +6,7 @@ class YandexMap extends Component {
   render() {
     return (
       <Consumer>
-        {({ state }) => {
+        {({ state, handlerUpdateCoordinates }) => {
           return (
             <YMaps>
               <Map state={state.points[state.points.length - 1]} width="100%" height="100%">
@@ -23,6 +23,12 @@ class YandexMap extends Component {
                       draggable: true,
                     }}
                     key={point.id}
+                    onGeometryChange={event => {
+                      handlerUpdateCoordinates(
+                        point.id,
+                        event.originalEvent.target.geometry._coordinates,
+                      );
+                    }}
                   />
                 ))}
               </Map>

@@ -69,6 +69,20 @@ class AppContext extends Component {
     }));
   };
 
+  handlerUpdateCoordinates = (id, coordinates) => {
+    let points = this.state.points.map(point => {
+      if (point.id === id) {
+        point.center = coordinates;
+      }
+
+      return point;
+    });
+
+    this.setState(() => ({
+      points,
+    }));
+  };
+
   render() {
     return (
       <Provider
@@ -78,6 +92,7 @@ class AppContext extends Component {
           handlerAddPoint: this.handlerAddPoint,
           handlerRemovePoint: this.handlerRemovePoint,
           handlerSortList: this.handlerSortList,
+          handlerUpdateCoordinates: this.handlerUpdateCoordinates,
         }}
       >
         {this.props.children}
