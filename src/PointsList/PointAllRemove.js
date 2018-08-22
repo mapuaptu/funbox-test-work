@@ -24,8 +24,12 @@ const StyledPointRemove = styled.button`
 const PointAllRemove = () => {
   return (
     <Consumer>
-      {({ handlerRemoveAllPoints }) => {
-        return <StyledPointRemove onClick={handlerRemoveAllPoints}>Удалить все</StyledPointRemove>;
+      {({ state, handlerRemoveAllPoints }) => {
+        if (state.points.length >= 2) {
+          return (
+            <StyledPointRemove onClick={handlerRemoveAllPoints}>Удалить все</StyledPointRemove>
+          );
+        }
       }}
     </Consumer>
   );
