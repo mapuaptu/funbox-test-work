@@ -14,32 +14,37 @@ class AppContext extends Component {
     if (event.key === 'Enter' && event.target.value.length > 4) {
       let point = event.target.value;
 
-      axios.get(`https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${point}`).then(data => {
-        let center = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-          .split(' ')
-          .reverse()
-          .map(value => parseFloat(value));
+      axios
+        .get(`https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${point}`)
+        .then(data => {
+          let center = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+            .split(' ')
+            .reverse()
+            .map(value => parseFloat(value));
 
-        let rightName = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+          let rightName = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
 
-        let points = [
-          ...this.state.points,
-          Object.assign(
-            {},
-            {
-              id: uuid.v4(),
-              title: rightName,
-              center,
-              zoom: 12,
-              type: 'yandex#satellite',
-            },
-          ),
-        ];
+          let points = [
+            ...this.state.points,
+            Object.assign(
+              {},
+              {
+                id: uuid.v4(),
+                title: rightName,
+                center,
+                zoom: 12,
+                type: 'yandex#satellite',
+              },
+            ),
+          ];
 
-        this.setState(() => ({
-          points,
-        }));
-      });
+          this.setState(() => ({
+            points,
+          }));
+        })
+        .catch(error => {
+          console.log(`Ошибка - ${error}`);
+        });
 
       event.target.value = '';
     }

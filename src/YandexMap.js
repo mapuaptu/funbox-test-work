@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Polyline } from 'react-yandex-maps';
 import { Consumer } from './AppContext';
 
 class YandexMap extends Component {
@@ -7,6 +7,10 @@ class YandexMap extends Component {
     return (
       <Consumer>
         {({ state, handlerUpdateCoordinates }) => {
+          let coordinates = state.points.map(point => {
+            return point.center;
+          });
+
           return (
             <YMaps>
               <Map state={state.points[state.points.length - 1]} width="100%" height="100%">
@@ -20,7 +24,9 @@ class YandexMap extends Component {
                       balloonContent: point.title,
                     }}
                     options={{
+                      preset: 'islands#circleIcon',
                       draggable: true,
+                      iconColor: '#282e33',
                     }}
                     key={point.id}
                     onGeometryChange={event => {
@@ -31,6 +37,15 @@ class YandexMap extends Component {
                     }}
                   />
                 ))}
+                <Polyline
+                  geometry={{
+                    coordinates,
+                  }}
+                  options={{
+                    strokeWidth: 3,
+                    strokeColor: '#50d4c3',
+                  }}
+                />
               </Map>
             </YMaps>
           );
@@ -58,6 +73,12 @@ Placemark.defaultProps = {
   },
   options: {
     draggable: true,
+  },
+};
+
+Polyline.defaultProps = {
+  geometry: {
+    coordinates: [],
   },
 };
 
