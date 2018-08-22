@@ -2,12 +2,14 @@
 
 # dependencies
 /node_modules
+client/node_modules
 
 # testing
 /coverage
 
 # production
 /build
+client/build
 
 # misc
 .idea
@@ -18,6 +20,9 @@
 .env.production.local
 yarn.lock
 package-lock.json
+
+client/yarn.lock
+client/package-lock.json
 
 npm-debug.log*
 yarn-debug.log*

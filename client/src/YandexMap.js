@@ -60,6 +60,7 @@ Map.defaultProps = {
     center: [52.981709, 49.710217],
     zoom: 12,
     type: 'yandex#satellite',
+    controls: [],
   },
 };
 

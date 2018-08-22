@@ -1,44 +1,31 @@
 {
-  "name": "funbox-test-work",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "0.18.0",
-    "lodash": "4.17.10",
-    "lodash.uniqueid": "4.0.1",
-    "normalize.css": "8.0.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4",
-    "react-sortable-hoc": "0.8.3",
-    "react-yandex-maps": "2.2.0",
-    "styled-components": "3.4.2",
-    "uuid": "3.3.2",
-    "webfontloader": "1.6.28"
-  },
-  "pre-commit": [
-    "lint:js",
-    "lint:css"
-  ],
+  "name": "funbox-test-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "prettier --write src/**/*.js",
-    "lint:css": "stylelint src/**/*.js"
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapuaptu/funbox-test-work.git"
+  },
+  "author": "Alex Nikishkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapuaptu/funbox-test-work/issues"
+  },
+  "homepage": "https://github.com/mapuaptu/funbox-test-work#readme",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.3",
+    "passport": "0.4.0"
   },
   "devDependencies": {
-    "pre-commit": "1.2.2",
-    "react-app-rewire-hot-loader": "1.0.1",
-    "react-app-rewired": "1.5.2",
-    "react-hot-loader": "4.3.4",
-    "stylelint": "9.5.0",
-    "stylelint-config-recommended": "2.1.0",
-    "stylelint-config-styled-components": "0.1.1",
-    "stylelint-declaration-block-no-ignored-properties": "1.1.0",
-    "stylelint-order": "1.0.0",
-    "stylelint-processor-styled-components": "1.3.2"
+    "nodemon": "1.18.3",
+    "pre-commit": "1.2.2"
   }
 }
