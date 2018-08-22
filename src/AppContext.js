@@ -20,15 +20,17 @@ class AppContext extends Component {
           .reverse()
           .map(value => parseFloat(value));
 
+        let rightName = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+
         let points = [
           ...this.state.points,
           Object.assign(
             {},
             {
               id: uuid.v4(),
-              title: point,
+              title: rightName,
               center,
-              zoom: 15,
+              zoom: 12,
               type: 'yandex#satellite',
             },
           ),
