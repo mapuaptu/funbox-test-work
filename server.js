@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.get("/test", (req, res) => {
   res.json({
-    msg: 'TEST OK'
+    msg: "TEST OK"
   });
 });
 
