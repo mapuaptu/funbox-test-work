@@ -9,7 +9,7 @@ const StyledPointRemove = styled.button`
   border-radius: 3px;
   padding: 10px 20px;
   width: 100%;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   color: #50d4c3;
   background-color: transparent;
