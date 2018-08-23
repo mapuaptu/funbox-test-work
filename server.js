@@ -1,30 +1,20 @@
-const express = require("express");
-const passport = require("passport");
-const bodyParser = require("body-parser");
-const port = process.env.PORT || 5000;
-
+const express = require('express');
 const app = express();
 
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
+const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-app.use(passport.initialize());
-app.use(express.static(`${__dirname}/client/build/`));
+app.use(express.static(`${__dirname}/client/build`));
 
-app.get("/", (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`);
-});
-
-app.get("/test", (req, res) => {
+app.get('/test', (req, res) => {
   res.json({
-    msg: "TEST OK"
+    msg: 'funbox-test-work start - OK',
   });
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`);
+});
+
 app.listen(port, () => {
-  console.log(`app start at port ${port}`);
+  console.log(`funbox-test-work start - OK on port ${port}`);
 });
