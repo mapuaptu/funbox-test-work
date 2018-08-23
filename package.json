@@ -1,7 +1,7 @@
 {
   "name": "funbox-test-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Funbox test work",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
