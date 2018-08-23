@@ -7,25 +7,17 @@
     "start": "node server.js",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mapuaptu/funbox-test-work.git"
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "prettier --write client/src/**/*.js",
+    "lint:css": "stylelint client/src/**/*.js",
+    "heroku-postbuild": "npm i --prefix client && npm run build --prefix client"
   },
   "author": "Alex Nikishkin",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mapuaptu/funbox-test-work/issues"
-  },
-  "homepage": "https://github.com/mapuaptu/funbox-test-work#readme",
   "dependencies": {
-    "body-parser": "1.18.3",
-    "express": "4.16.3",
-    "passport": "0.4.0"
+    "express": "4.16.3"
   },
   "devDependencies": {
-    "nodemon": "1.18.3",
-    "pre-commit": "1.2.2"
+    "nodemon": "1.18.3"
   }
 }
