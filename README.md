@@ -1,11 +1,11 @@
-### Тестовое задание FUNBOX (интерактивная карта)
+## Тестовое задание FUNBOX (интерактивная карта)
 
-## Ссылки
+### Ссылки
 
 - Репозиторий https://github.com/mapuaptu/funbox-test-work
 - Рабочий сервер https://funbox-test-work.herokuapp.com/
 
-## Описание Локальной установки
+### Описание Локальной установки
 
   1. Клонируем репозиторий. `git clone https://github.com/mapuaptu/funbox-test-work.git`
   
