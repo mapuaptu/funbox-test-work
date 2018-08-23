@@ -22,13 +22,12 @@
   ],
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "NPM_CONFIG_PRODUCTION=false npm install && npm run build-files",
+    "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "prettier --write src/**/*.js",
-    "lint:css": "stylelint src/**/*.js",
-    "build-files": "react-app-rewired build"
+    "lint:css": "stylelint src/**/*.js"
   },
   "devDependencies": {
     "pre-commit": "1.2.2",
