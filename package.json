@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "client": "npm start --prefix client",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "repository": {
     "type": "git",
