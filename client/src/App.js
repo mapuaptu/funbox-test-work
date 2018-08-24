@@ -1,6 +1,6 @@
 import React from 'react';
-import Points from './Points';
-import Map from './Map';
+import Points from './Points/Points';
+import Map from './Map/Map';
 import AppContext from './AppContext';
 
 import styled from 'styled-components';
