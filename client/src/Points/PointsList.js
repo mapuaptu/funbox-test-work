@@ -1,6 +1,7 @@
 import React from 'react';
 import Point from './Point';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { SortableContainer } from 'react-sortable-hoc';
 
 import { Consumer } from '../AppContext';
@@ -30,5 +31,10 @@ const PointsList = SortableContainer(() => {
     </div>
   );
 });
+
+PointsList.propTypes = {
+  distance: PropTypes.number,
+  onSortEnd: PropTypes.func,
+};
 
 export default PointsList;

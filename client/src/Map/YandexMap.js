@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { YMaps, Map, Placemark, Polyline } from 'react-yandex-maps';
 import { Consumer } from '../AppContext';
 
@@ -7,6 +8,8 @@ class YandexMap extends Component {
     return (
       <Consumer>
         {({ state, handlerUpdateCoordinates }) => {
+          // Массив для отрисовки линий
+
           let coordinates = state.points.map(point => {
             return point.center;
           });
@@ -55,6 +58,10 @@ class YandexMap extends Component {
   }
 }
 
+Map.propTypes = {
+  state: PropTypes.object,
+};
+
 Map.defaultProps = {
   state: {
     center: [52.981709, 49.710217],
@@ -62,6 +69,13 @@ Map.defaultProps = {
     type: 'yandex#satellite',
     controls: [],
   },
+};
+
+Placemark.propTypes = {
+  geometry: PropTypes.object,
+  properties: PropTypes.object,
+  options: PropTypes.object,
+  onGeometryChange: PropTypes.func,
 };
 
 Placemark.defaultProps = {
@@ -75,6 +89,11 @@ Placemark.defaultProps = {
   options: {
     draggable: true,
   },
+};
+
+Polyline.propTypes = {
+  geometry: PropTypes.object,
+  options: PropTypes.object,
 };
 
 Polyline.defaultProps = {

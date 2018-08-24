@@ -21,7 +21,6 @@ class Points extends Component {
       <StyledPoints className="points">
         <div>
           <PointInput />
-
           <Consumer>
             {({ handlerSortList }) => {
               return <PointsList distance={5} onSortEnd={handlerSortList} />;
