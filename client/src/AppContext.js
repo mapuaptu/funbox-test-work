@@ -11,7 +11,7 @@ class AppContext extends Component {
   };
 
   handlerAddPoint = event => {
-    if (event.key === 'Enter' && event.target.value.length > 4) {
+    if (event.key === 'Enter' && event.target.value.length >= 2) {
       let point = event.target.value;
 
       axios
