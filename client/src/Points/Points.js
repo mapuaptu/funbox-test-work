@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Consumer } from './AppContext';
-import PointAllRemove from './PointsList/PointAllRemove';
-import PointInput from './PointsList/PointInput';
-import PointsList from './PointsList/PointsList';
+import { Consumer } from '../AppContext';
+import PointAllRemove from './PointAllRemove';
+import PointInput from './PointInput';
+import PointsList from './PointsList';
 
 import styled from 'styled-components';
 

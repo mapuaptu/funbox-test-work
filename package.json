@@ -7,8 +7,9 @@
     "start": "node server.js",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:js && npm run lint:serverJs && npm run lint:css",
     "lint:js": "prettier --write client/src/**/*.js",
+    "lint:serverJs": "prettier --write server.js",
     "lint:css": "stylelint client/src/**/*.js",
     "heroku-postbuild": "npm i --prefix client && npm run build --prefix client"
   },

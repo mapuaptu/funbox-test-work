@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { YMaps, Map, Placemark, Polyline } from 'react-yandex-maps';
-import { Consumer } from './AppContext';
+import { Consumer } from '../AppContext';
 
 class YandexMap extends Component {
   render() {
