@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import YandexMap from './YandexMap';
-
 import styled from 'styled-components';
 
 const StyledMap = styled.div`
   position: relative;
   color: #fff;
   background-color: #18191d;
+
+  /* Стили для адаптивности карты, и растягивании при изменении размеров браузера */
 
   .map__container {
     position: absolute;
@@ -15,7 +16,7 @@ const StyledMap = styled.div`
     width: 100%;
     height: 100%;
 
-    /*stylelint-disable*/
+    /* stylelint-disable */
     > div {
       > ymaps {
         width: 100% !important;

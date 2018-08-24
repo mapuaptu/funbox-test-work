@@ -1,6 +1,6 @@
 import React from 'react';
 import { Consumer } from '../AppContext';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import removeIcon from '../icons/remove.svg';
 
@@ -44,6 +44,10 @@ const PointRemove = ({ id }) => {
       }}
     </Consumer>
   );
+};
+
+PointRemove.propTypes = {
+  onClick: PropTypes.func,
 };
 
 export default PointRemove;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Consumer } from '../AppContext';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
@@ -33,6 +34,10 @@ const PointAllRemove = () => {
       }}
     </Consumer>
   );
+};
+
+PointAllRemove.propTypes = {
+  handlerRemoveAllPoints: PropTypes.func,
 };
 
 export default PointAllRemove;

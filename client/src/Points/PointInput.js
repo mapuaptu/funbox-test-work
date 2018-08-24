@@ -1,5 +1,6 @@
 import React from 'react';
 import { Consumer } from '../AppContext';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
@@ -39,6 +40,10 @@ const PointInput = () => {
       }}
     </Consumer>
   );
+};
+
+PointInput.propTypes = {
+  onKeyDown: PropTypes.func,
 };
 
 export default PointInput;

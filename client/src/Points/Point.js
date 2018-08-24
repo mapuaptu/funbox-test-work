@@ -2,6 +2,7 @@ import React from 'react';
 import PointRemove from './PointRemove';
 import { SortableElement } from 'react-sortable-hoc';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledPoint = styled.li`
   position: relative;
@@ -11,6 +12,7 @@ const StyledPoint = styled.li`
   padding: 20px 10px;
   word-break: break-all;
   color: #c0c8d0;
+  background-color: #282e33;
 `;
 
 const Point = SortableElement(({ title, id }) => {
@@ -21,5 +23,10 @@ const Point = SortableElement(({ title, id }) => {
     </StyledPoint>
   );
 });
+
+Point.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default Point;
