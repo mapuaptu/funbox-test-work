@@ -32,12 +32,7 @@ class YandexMap extends Component {
                       iconColor: '#282e33',
                     }}
                     key={point.id}
-                    onGeometryChange={event => {
-                      handlerUpdateCoordinates(
-                        point.id,
-                        event.originalEvent.target.geometry._coordinates,
-                      );
-                    }}
+                    onGeometryChange={handlerUpdateCoordinates(point.id)}
                   />
                 ))}
                 <Polyline

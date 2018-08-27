@@ -58,7 +58,7 @@ class AppContext extends Component {
     }
   };
 
-  handlerRemovePoint = id => {
+  handlerRemovePoint = id => () => {
     const filteredPoints = this.state.points.filter(point => {
       return point.id !== id;
     });
@@ -74,10 +74,10 @@ class AppContext extends Component {
     }));
   };
 
-  handlerUpdateCoordinates = (id, coordinates) => {
+  handlerUpdateCoordinates = id => event => {
     let points = this.state.points.map(point => {
       if (point.id === id) {
-        point.center = coordinates;
+        point.center = event.originalEvent.target.geometry._coordinates;
       }
 
       return point;
