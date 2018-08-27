@@ -32,12 +32,7 @@ const PointRemove = ({ id }) => {
     <Consumer>
       {({ handlerRemovePoint }) => {
         return (
-          <StyledPointRemove
-            className="point__remove"
-            onClick={() => {
-              handlerRemovePoint(id);
-            }}
-          >
+          <StyledPointRemove className="point__remove" onClick={handlerRemovePoint(id)}>
             <img src={removeIcon} alt="Удалить" />
           </StyledPointRemove>
         );
