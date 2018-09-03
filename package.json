@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "client": "npm start --prefix client",
-    "server": "nodemon server.js",
+    "server": "nodemon --exec babel-node server.js",
     "lint": "npm run lint:js && npm run lint:serverJs && npm run lint:css",
     "lint:js": "prettier --write client/src/**/*.js",
     "lint:serverJs": "prettier --write server.js",
@@ -19,6 +19,9 @@
     "express": "4.16.3"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-2": "6.24.1",
     "nodemon": "1.18.3"
   }
 }
