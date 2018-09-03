@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(express.static(`${__dirname}/client/build`));
+app.use(express.static(`./client/build`));
 
 app.get("/test", (req, res) => {
   res.json({
@@ -12,7 +12,7 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`);
+  res.sendFile(`./client/build/index.html`);
 });
 
 app.listen(port, () => {
