@@ -7,7 +7,7 @@ app.use(express.static(`./client/build`));
 
 app.get("/test", (req, res) => {
   res.json({
-    msg: "funbox-test-work start - OK"
+    msg: "app start - OK"
   });
 });
 
@@ -16,5 +16,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`funbox-test-work start - OK on port ${port}`);
+  console.log(`app start - OK on port ${port}`);
 });
