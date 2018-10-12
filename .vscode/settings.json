@@ -1,0 +1,9 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 13,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.formatOnSave": true,
+  "tslint.enable": false,
+  "tslint.jsEnable": false
+}
