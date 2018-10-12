@@ -1,24 +1,24 @@
 {
-  "name": "react-map",
-  "version": "0.0.1",
-  "description": "react-map",
-  "main": "server.js",
-  "scripts": {
-    "start": "node --experimental-modules server.mjs",
-    "client": "npm start --prefix client",
-    "server": "nodemon --experimental-modules server.mjs",
-    "lint": "npm run lint:js && npm run lint:serverJs && npm run lint:css",
-    "lint:js": "prettier --write client/src/**/*.js",
-    "lint:serverJs": "prettier --write server.mjs",
-    "lint:css": "stylelint client/src/**/*.js",
-    "heroku-postbuild": "npm i --prefix client && npm run build --prefix client"
-  },
-  "author": "Alex Nikishkin",
-  "license": "MIT",
-  "dependencies": {
-    "express": "4.16.3"
-  },
-  "devDependencies": {
-    "nodemon": "1.18.4"
-  }
+	"name": "react-map",
+	"version": "0.0.1",
+	"description": "react-map",
+	"main": "server.js",
+	"scripts": {
+		"start": "node --experimental-modules server.mjs",
+		"client": "npm start --prefix client",
+		"server": "nodemon --experimental-modules server.mjs",
+		"lint": "npm run lint:js && npm run lint:serverJs && npm run lint:css",
+		"lint:js": "prettier --write client/src/**/*.js",
+		"lint:serverJs": "prettier --write server.mjs",
+		"lint:css": "stylelint client/src/**/*.js",
+		"heroku-postbuild": "npm i --prefix client && npm run build --prefix client"
+	},
+	"author": "Alex Nikishkin",
+	"license": "MIT",
+	"dependencies": {
+		"express": "4.16.3"
+	},
+	"devDependencies": {
+		"nodemon": "1.18.4"
+	}
 }
