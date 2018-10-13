@@ -3,6 +3,7 @@
 ### Ссылки
 
 - Репозиторий https://github.com/mapuaptu/react-map
+- Работающий пример - https://maptu-react-map.herokuapp.com/
 
 ### Описание Локальной установки
 
