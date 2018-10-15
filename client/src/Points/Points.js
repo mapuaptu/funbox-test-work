@@ -23,6 +23,8 @@ class Points extends Component {
           <PointInput />
           <Consumer>
             {({ handlerSortList }) => {
+              console.log('refresh-list');
+
               return <PointsList distance={5} onSortEnd={handlerSortList} />;
             }}
           </Consumer>
