@@ -7,25 +7,12 @@ const StyledMap = styled.div`
   color: #fff;
   background-color: #18191d;
 
-  /* Стили для адаптивности карты, и растягивании при изменении размеров браузера */
-
   .map__container {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-
-    /* stylelint-disable */
-    > div {
-      > ymaps {
-        width: 100% !important;
-
-        > ymaps {
-          width: 100% !important;
-        }
-      }
-    }
   }
 `;
 

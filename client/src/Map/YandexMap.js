@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { YMaps, Map, Placemark, Polyline } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Polyline, ZoomControl } from 'react-yandex-maps';
 import { Consumer } from '../AppContext';
+
+const mapState = {
+  center: [55.752024, 37.617646],
+  zoom: 12,
+  type: 'yandex#satellite',
+};
 
 class YandexMap extends Component {
   render() {
     return (
       <Consumer>
-        {({ state, handlerUpdateCoordinates }) => {
+        {({ state, handlerUpdateCoordinates, getMapInstance }) => {
           // Массив для отрисовки линий
 
           let coordinates = state.points.map(point => {
@@ -16,12 +22,12 @@ class YandexMap extends Component {
 
           return (
             <YMaps>
-              <Map state={state.points[state.points.length - 1]} width="100%" height="100%">
-                {state.points.map(point => (
+              <Map state={mapState} width="100%" height="100%" instanceRef={getMapInstance}>
+                {state.points.map((point, index) => (
                   <Placemark
-                    geometry={{
-                      coordinates: point.center,
-                    }}
+                    key={index}
+                    geometry={point.center}
+                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
                     properties={{
                       hintContent: point.title,
                       balloonContent: point.title,
@@ -31,13 +37,14 @@ class YandexMap extends Component {
                       draggable: true,
                       iconColor: '#282e33',
                     }}
-                    key={point.id}
                     onGeometryChange={handlerUpdateCoordinates(point.id)}
                   />
                 ))}
                 <Polyline
-                  geometry={{
-                    coordinates,
+                  geometry={coordinates}
+                  properties={{
+                    hintContent: '555',
+                    balloonContent: 'asodfjhasdf',
                   }}
                   options={{
                     strokeWidth: 3,
@@ -53,48 +60,48 @@ class YandexMap extends Component {
   }
 }
 
-Map.propTypes = {
-  state: PropTypes.object,
-};
+// Map.propTypes = {
+//   state: PropTypes.object,
+// };
 
-Map.defaultProps = {
-  state: {
-    center: [52.981709, 49.710217],
-    zoom: 12,
-    type: 'yandex#satellite',
-    controls: [],
-  },
-};
+// Map.defaultProps = {
+//   state: {
+//     center: [55.752024, 37.617646],
+//     zoom: 12,
+//     type: 'yandex#satellite',
+//     controls: ['zoomControl'],
+//   },
+// };
 
-Placemark.propTypes = {
-  geometry: PropTypes.object,
-  properties: PropTypes.object,
-  options: PropTypes.object,
-  onGeometryChange: PropTypes.func,
-};
+// Placemark.propTypes = {
+//   geometry: PropTypes.object,
+//   properties: PropTypes.object,
+//   options: PropTypes.object,
+//   onGeometryChange: PropTypes.func,
+// };
 
-Placemark.defaultProps = {
-  geometry: {
-    coordinates: [52.981709, 49.710217],
-  },
-  properties: {
-    hintContent: 'Чапаевск',
-    balloonContent: 'Чапаевск',
-  },
-  options: {
-    draggable: true,
-  },
-};
+// Placemark.defaultProps = {
+//   geometry: {
+//     coordinates: [55.752024, 37.617646],
+//   },
+//   properties: {
+//     hintContent: 'Москва',
+//     balloonContent: 'Москва',
+//   },
+//   options: {
+//     draggable: true,
+//   },
+// };
 
-Polyline.propTypes = {
-  geometry: PropTypes.object,
-  options: PropTypes.object,
-};
+// Polyline.propTypes = {
+//   geometry: PropTypes.object,
+//   options: PropTypes.object,
+// };
 
-Polyline.defaultProps = {
-  geometry: {
-    coordinates: [],
-  },
-};
+// Polyline.defaultProps = {
+//   geometry: {
+//     coordinates: [],
+//   },
+// };
 
 export default YandexMap;

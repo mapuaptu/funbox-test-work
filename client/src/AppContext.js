@@ -10,41 +10,33 @@ class AppContext extends Component {
     points: [],
   };
 
+  getMapInstance = map => {
+    this.map = map;
+
+    console.log(this.map.getCenter());
+  };
+
   handlerAddPoint = event => {
-    if (event.key === 'Enter' && event.target.value.length >= 2) {
-      let point = event.target.value;
+    if (event.key === 'Enter') {
+      let value = event.target.value;
 
-      axios
-        .get(`https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${point}`)
-        .then(data => {
-          let center = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
-            .split(' ')
-            .reverse()
-            .map(value => parseFloat(value));
+      let points = [
+        ...this.state.points,
+        Object.assign(
+          {},
+          {
+            id: uuid.v4(),
+            title: value,
+            center: this.map.getCenter(),
+            //zoom: 12,
+            //type: 'yandex#satellite',
+          },
+        ),
+      ];
 
-          let rightName = data.data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
-
-          let points = [
-            ...this.state.points,
-            Object.assign(
-              {},
-              {
-                id: uuid.v4(),
-                title: rightName,
-                center,
-                zoom: 12,
-                type: 'yandex#satellite',
-              },
-            ),
-          ];
-
-          this.setState(() => ({
-            points,
-          }));
-        })
-        .catch(error => {
-          console.log(`Ошибка - ${error}`);
-        });
+      this.setState(() => ({
+        points,
+      }));
 
       event.target.value = '';
     }
@@ -98,6 +90,7 @@ class AppContext extends Component {
           handlerRemovePoint: this.handlerRemovePoint,
           handlerSortList: this.handlerSortList,
           handlerUpdateCoordinates: this.handlerUpdateCoordinates,
+          getMapInstance: this.getMapInstance,
         }}
       >
         {this.props.children}
