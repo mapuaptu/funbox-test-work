@@ -1,7 +1,6 @@
 import React, { Component, createContext } from 'react';
 import uuid from 'uuid';
 import { arrayMove } from 'react-sortable-hoc';
-import axios from 'axios/index';
 
 const { Provider, Consumer } = createContext();
 
@@ -12,8 +11,6 @@ class AppContext extends Component {
 
   getMapInstance = map => {
     this.map = map;
-
-    console.log(this.map.getCenter());
   };
 
   handlerAddPoint = event => {
@@ -28,8 +25,6 @@ class AppContext extends Component {
             id: uuid.v4(),
             title: value,
             center: this.map.getCenter(),
-            //zoom: 12,
-            //type: 'yandex#satellite',
           },
         ),
       ];
@@ -44,10 +39,14 @@ class AppContext extends Component {
 
   handlerSortList = ({ oldIndex, newIndex }) => {
     if (oldIndex !== newIndex) {
+      let newPoints = arrayMove([...this.state.points], oldIndex, newIndex);
+
       this.setState(() => ({
-        points: arrayMove(this.state.points, oldIndex, newIndex),
+        points: newPoints,
       }));
     }
+
+    console.log('sort list');
   };
 
   handlerRemovePoint = id => () => {
@@ -67,16 +66,15 @@ class AppContext extends Component {
   };
 
   handlerUpdateCoordinates = id => event => {
-    let points = this.state.points.map(point => {
+    let currentPoints = this.state.points.map(point => {
       if (point.id === id) {
-        point.center = event.originalEvent.target.geometry._coordinates;
+        point.center = event._sourceEvent.originalEvent.target.geometry._coordinates;
       }
-
       return point;
     });
 
     this.setState(() => ({
-      points,
+      points: currentPoints,
     }));
   };
 

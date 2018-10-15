@@ -20,32 +20,32 @@ class YandexMap extends Component {
             return point.center;
           });
 
+          console.log('refresh- map');
+
           return (
             <YMaps>
               <Map state={mapState} width="100%" height="100%" instanceRef={getMapInstance}>
-                {state.points.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    geometry={point.center}
-                    modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
-                    properties={{
-                      hintContent: point.title,
-                      balloonContent: point.title,
-                    }}
-                    options={{
-                      preset: 'islands#circleIcon',
-                      draggable: true,
-                      iconColor: '#282e33',
-                    }}
-                    onGeometryChange={handlerUpdateCoordinates(point.id)}
-                  />
-                ))}
+                {state.points.map((point, index) => {
+                  return (
+                    <Placemark
+                      key={index}
+                      geometry={point.center}
+                      modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                      properties={{
+                        hintContent: point.title,
+                        balloonContent: point.title,
+                      }}
+                      options={{
+                        preset: 'islands#circleIcon',
+                        draggable: true,
+                        iconColor: '#282e33',
+                      }}
+                      onDrag={handlerUpdateCoordinates(point.id)}
+                    />
+                  );
+                })}
                 <Polyline
                   geometry={coordinates}
-                  properties={{
-                    hintContent: '555',
-                    balloonContent: 'asodfjhasdf',
-                  }}
                   options={{
                     strokeWidth: 3,
                     strokeColor: '#50d4c3',
