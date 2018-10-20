@@ -48,7 +48,7 @@ class YandexMap extends Component {
                   geometry={coordinates}
                   options={{
                     strokeWidth: 3,
-                    strokeColor: '#50d4c3',
+                    strokeColor: '#638bae',
                   }}
                 />
               </Map>
