@@ -6,13 +6,13 @@ import styled from 'styled-components';
 
 const StyledPointRemove = styled.button`
   display: block;
-  border: 1px solid #50d4c3;
+  border: 1px solid #638bae;
   border-radius: 3px;
   padding: 10px 20px;
   width: 100%;
   font-size: 14px;
   text-align: center;
-  color: #50d4c3;
+  color: #638bae;
   background-color: transparent;
   transition: opacity 0.3s linear;
   cursor: pointer;
